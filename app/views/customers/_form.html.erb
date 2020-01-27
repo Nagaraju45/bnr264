@@ -1,0 +1,21 @@
+<div class ='form-group'>
+<%= c.label :name, 'Name' %>
+ <%= c.text_field :name, :class => "form-control" %>
+</div>
+<div class = 'form-group'>
+<%= c.label :Email, 'Email' %>
+<%= c.text_field :email, :class => "form-control" %>
+</div>
+<div class = 'form-group'>
+<%= c.label :mobile, 'Mobile No' %>
+<%= c.text_field :mobile, :class => "form-control" %>
+</div>
+<div class = 'form-group'>
+<%= c.label :address, "Address" %>
+<%= c.text_field :address, :class => "form-control" %>
+</div>   
+<div class = 'form-group' >
+<%= c.label :file, "File Upload" %>
+<%= c.file_field :file %>
+</div>
+<%= c.submit "submit", :class => 'btn btn-success' %>

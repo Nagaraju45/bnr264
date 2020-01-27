@@ -1,0 +1,6 @@
+
+<%= form_with model: @order, url: create_order_path do |c| %>
+    <%= render partial: 'form', locals: {c: c} %>
+    <%= link_to "back to customer orders", customer_orders_path(c) %>
+ <% end %>
+ 

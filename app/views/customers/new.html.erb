@@ -1,0 +1,3 @@
+<%= form_with model: @customer, url: create_customer_path do |c| %>
+   <%= render partial: 'form', locals: {c: c} %>
+<% end %>
