@@ -13,6 +13,7 @@ class OrdersController < ApplicationController
     @order = Order.new
     @order.customer
     @customer = Customer.all
+    
   end
 
   def edit

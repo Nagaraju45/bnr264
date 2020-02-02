@@ -1,7 +1,4 @@
-<%= form_with model: @customer, url: update_customer_path do |c| %>
-    <div class='form-group'>
-<%= c.label :Id, 'Id' %>
- <%= c.text_field :id, :class => "form-control", :disabled => true %>
-</div>
+<%= form_with model: @customer, url: edit_customer_path do |c| %>
+ 
     <%= render partial: 'form', locals: {c: c} %>
  <% end %>

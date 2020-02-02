@@ -1,17 +1,17 @@
-<div class ='form-group'>
-    <%= p.label :name, 'Name' %>
-    <%= p.text_field :name, :class => "form-control" %>
-</div>
 <div class = 'form-group'>
-    <%= p.label :units, 'Units' %>
-    <%= p.text_field :units, :class => "form-control" %>
+<%= select("order", "customer_id", Product.all.collect {|p| [ p.name, p.id ] }, { include_blank: 'select Product' }, :class => 'form-control') %>
+</div>
+
+<div class = 'form-group'>
+    <%= p.label :unit, 'Units' %>
+    <%= p.text_field :unit, :class => "form-control" %>
 </div>
 <div class = 'form-group'>
     <%= p.label :unit_price, 'Unit Price' %>
-    <%= p.text_field :mobile, :class => "form-control" %>
+    <%= p.text_field :unit_price, :class => "form-control" %>
 </div>
 <div class = 'form-group'>
     <%= p.label :date, "Date" %>
-    <%= p.text_field :date, :class => "form-control" %>
+    <%= p.text_field :date, :class => "form-control" %>    
 </div>
     <%= p.submit "submit", :class => 'btn btn-success' %>

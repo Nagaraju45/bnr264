@@ -1,5 +1,13 @@
 class Customer < ApplicationRecord
     has_many :orders
-    has_many_attached :images
-    has_one_attached :avatar
+
+    geocoded_by :full_address
+    after_validation :geocode
+
+    def full_address
+        [:village, :mandal, :district, :state, :country].join(', ')
+    end
+
+    
+
 end

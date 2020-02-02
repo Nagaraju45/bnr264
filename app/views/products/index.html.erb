@@ -1,24 +1,22 @@
 <div class = "table-responsive">
-<table class='table table-striped'>
-<%= link_to "new", new_products_path, :class => 'btn btn-primary'%>
-<h1>Products</h1>
-<tr>
-<th>Name</th>
-<th>Units</th>
-<th>Unit Price</th>
-<th>Date</th>
-<th></th>
-<th></th>
-</tr>
-<% @products.each do |product| %>    
-    <tr>
-    <td><%=  %></td>
-    <td><%= product.name %></td>
-    <td><%= product.unit %></td>
-    <td><%= product.unit_price %></td>
-    <td><%= product.date %></td>
-    <td><%= link_to "edit", edit_products_path(product), :class => 'edit_button' %></td>
-    </tr>
-    <% end %>
-</table>
+    <table class='table table-striped'>
+        <%= link_to "new", new_products_path, :class => 'btn btn-primary'%>
+        <h1>Products</h1>
+        <tr>
+            <th>Name</th>
+            <th>Units</th>
+            <th>Unit Price</th>
+            <th>Date</th>
+            <th></th>
+        </tr>
+        <% @products.each do |product| %>    
+            <tr>   
+                <td><%= product.name %></td>
+                <td><%= product.unit %></td>
+                <td><%= product.unit_price %></td>
+                <td><%= product.date %></td>
+                <td><%= link_to "edit", products_path(product), :class => 'edit_button' %></td>
+            </tr>
+        <% end %>
+    </table>
 </div>

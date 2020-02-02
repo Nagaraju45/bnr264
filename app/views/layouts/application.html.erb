@@ -1,17 +1,496 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Company</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
 
-    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
-  <body>
-    <div class = 'container' >
-    <%= yield %>
+  
+
+<html>
+<head>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<style>
+body {
+  background: #F1F3FA;
+}
+
+/* Profile container */
+.profile {
+ # margin: 20px 0;
+}
+
+/* Profile sidebar */
+.profile-sidebar {
+  padding: 20px 0 10px 0;
+  background: #fff;
+}
+
+.profile-userpic img {
+  float: none;
+  margin: 0 auto;
+  width: 50%;
+  height: 50%;
+  -webkit-border-radius: 50% !important;
+  -moz-border-radius: 50% !important;
+  border-radius: 50% !important;
+}
+
+.profile-usertitle {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.profile-usertitle-name {
+  color: #5a7391;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 7px;
+}
+
+.profile-usertitle-job {
+  text-transform: uppercase;
+  color: #5b9bd1;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.profile-userbuttons {
+  text-align: center;
+  margin-top: 10px;
+  text-shadow: 2px 2px red;
+}
+
+.profile-userbuttons .btn {
+  text-transform: uppercase;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 6px 15px;
+  margin-right: 5px;
+}
+
+.profile-userbuttons .btn:last-child {
+  margin-right: 0px;
+}
+    
+.profile-usermenu {
+  margin-top: 30px;
+}
+
+.profile-usermenu ul li {
+  border-bottom: 1px solid #f0f4f7;
+}
+
+.profile-usermenu ul li:last-child {
+  border-bottom: none;
+}
+
+.profile-usermenu ul li a {
+  color: #93a3b5;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.profile-usermenu ul li a i {
+  margin-right: 8px;
+  font-size: 14px;
+}
+
+.profile-usermenu ul li a:hover {
+  background-color: #fafcfd;
+  color: green;
+}
+
+.profile-usermenu ul li.active {
+  border-bottom: none;
+}
+
+.profile-usermenu ul li.active a {
+  color: #5b9bd1;
+  background-color: #f6f9fb;
+  border-left: 2px solid #5b9bd1;
+  margin-left: -2px;
+}
+
+/* Profile Content */
+.profile-content {
+  padding: 20px;
+  background: #fff;
+  min-height: 460px;
+}
+
+
+/** 
+ * These are only for nav-colors, not needed at all for the functionality
+ */
+.navbar-default {
+  background-color: green;
+  border-color: #ee5f5f;
+}
+.navbar-default .navbar-brand {
+  color: #ffffff;
+}
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus {
+  color: #560000;
+}
+.navbar-default .navbar-text {
+  color: #ffffff;
+}
+.navbar-default .navbar-nav > li > a {
+  color: #ffffff;
+}
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+  color: violet;
+}
+.navbar-default .navbar-nav > li > .dropdown-menu {
+  background-color: #e82525;
+}
+.navbar-default .navbar-nav > li > .dropdown-menu > li > a {
+  color: #ffffff;
+}
+.navbar-default .navbar-nav > li > .dropdown-menu > li > a:hover,
+.navbar-default .navbar-nav > li > .dropdown-menu > li > a:focus {
+  color: #560000;
+  background-color: #ee5f5f;
+}
+.navbar-default .navbar-nav > li > .dropdown-menu > li.divider {
+  background-color: #ee5f5f;
+}
+.navbar-default .navbar-nav .open .dropdown-menu > .active > a,
+.navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover,
+.navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {
+  color: #560000;
+  background-color: #ee5f5f;
+}
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .active > a:focus {
+  color: #560000;
+  background-color: #ee5f5f;
+}
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a:hover,
+.navbar-default .navbar-nav > .open > a:focus {
+  color: #560000;
+  background-color: #ee5f5f;
+}
+.navbar-default .navbar-toggle {
+  border-color: #ee5f5f;
+}
+.navbar-default .navbar-toggle:hover,
+.navbar-default .navbar-toggle:focus {
+  background-color: #ee5f5f;
+}
+.navbar-default .navbar-toggle .icon-bar {
+  background-color: #ffffff;
+}
+.navbar-default .navbar-collapse,
+.navbar-default .navbar-form {
+  border-color: #ffffff;
+}
+.navbar-default .navbar-link {
+  color: #ffffff;
+}
+.navbar-default .navbar-link:hover {
+  color: #560000;
+}
+
+@media (max-width: 767px) {
+  .navbar-default .navbar-nav .open .dropdown-menu > li > a {
+    color: #ffffff;
+  }
+  .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
+  .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
+    color: #560000;
+  }
+  .navbar-default .navbar-nav .open .dropdown-menu > .active > a,
+  .navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover,
+  .navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {
+    color: #560000;
+    background-color: #ee5f5f;
+  }
+}
+
+.box {
+  background:#FFF;
+   
+}
+.effect
+{
+  	position:relative;
+    -webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+       -moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+            box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+    
+}
+.effect:before, .effect:after
+{
+	content:"";
+    position:absolute;
+    z-index:-1;
+    -webkit-box-shadow:0 0 20px rgba(0,0,0,0.8);
+    -moz-box-shadow:0 0 20px rgba(0,0,0,0.8);
+    box-shadow:0 0 20px rgba(0,0,0,0.8);
+    top:10px;
+    bottom:10px;
+    left:0;
+    right:0;
+    -moz-border-radius:100px / 10px;
+    border-radius:100px / 20px;
+}
+.effect:after
+{
+	right:10px;
+    left:auto;
+    -webkit-transform:skew(8deg) rotate(3deg);
+       -moz-transform:skew(8deg) rotate(3deg);
+        -ms-transform:skew(8deg) rotate(3deg);
+         -o-transform:skew(8deg) rotate(3deg);
+            transform:skew(8deg) rotate(3deg);
+}
+</style>
+</head>
+<body>
+
+
+
+
+	<div class="">
+
+		<!-- Static navbar -->
+		<nav class="navbar navbar-default">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="https://www.systembyran.se" target="_blank">Systembyran</a>
+				</div>
+
+
+				<div id="navbar" class="navbar-collapse collapse">
+					<ul class="nav navbar-nav navbar-right">
+						<li class=""><a href="#">Home <span class="sr-only">(current)</span></a></li>
+						<li class="hideable"><a href="#">Menu item</a></li>
+						<li class="hideable"><a href="#">Menu Item 2</a></li>
+						<li class="hideable"><a href="#">Menu item 3</a></li>
+						<li class="hideable"><a href="#">Menu item 4</a></li>
+						<li class="hideable"><a href="#">Menu item 5</a></li>
+						<li class="hideable"><a href="#">Menu item 6</a></li>
+						
+						<li id="nav-more" class="dropdown hidden"><!-- the 'more' dropdown item, originally hidden -->
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">MORE <span class="caret"></span></a>
+							<ul class="dropdown-menu">
+							</ul>
+						</li>
+						
+						<li><a href="#"><i class="glyphicon glyphicon-globe"></i></a></li>
+					</ul>
+				</div>
+				<!--/.nav-collapse -->
+			</div>
+			<!--/.container-fluid -->
+		</nav>
+
+		<div class="">
+		
+		</div>
+
+	</div>
+	<!-- /container -->
+
+
+
+<div class="">
+    <div class="row profile">
+    <div class="box effect">
+		<div class="col-md-3">
+			<div class="profile-sidebar">
+				<!-- SIDEBAR USERPIC 
+				<div class="profile-userpic">
+					<img src="http://keenthemes.com/preview/metronic/theme/assets/admin/pages/media/profile/profile_user.jpg" class="img-responsive" alt="">
+				</div> -->
+				<!-- END SIDEBAR USERPIC -->
+				<!-- SIDEBAR USER TITLE -->
+				<div class="profile-usertitle">
+					<div class="profile-usertitle-name">
+						Marcus Doe
+					</div>
+					<div class="profile-usertitle-job">
+						Developer
+					</div>
+				</div>
+				<!-- END SIDEBAR USER TITLE -->
+				<!-- SIDEBAR BUTTONS -->
+				<div class="profile-userbuttons">
+					<button type="button" class="btn btn-success btn-sm">Follow</button>
+					<button type="button" class="btn btn-danger btn-sm">Message</button>
+				</div>
+				<!-- END SIDEBAR BUTTONS -->
+				<!-- SIDEBAR MENU -->
+				<div class="profile-usermenu">
+					<ul class="nav">
+						<li class="">
+							<a href="#">
+							<i class="glyphicon glyphicon-home"></i>
+							Overview </a>
+						</li>
+						<li>
+							<a href="#">
+							<i class="glyphicon glyphicon-user"></i>
+							Account Settings </a>
+						</li>
+						<li>
+							<a href="#" target="_blank">
+							<i class="glyphicon glyphicon-ok"></i>
+							Tasks </a>
+						</li>
+						<li>
+							<a href="#">
+							<i class="glyphicon glyphicon-flag"></i>
+							Help </a>
+						</li>
+					</ul>
+				</div>
+				<!-- END MENU -->
+			</div>
+		</div>
+		<div class="col-md-9">
+            <div class="profile-content">
+         
+         <div class = 'container-fluid' >
+    
+      <div class=''>
+      <%= yield %>
+      </div>
+    </div>
+            </div>
+		</div>
+	</div>
+</div>
+</div>
+<center>
+<strong>Powered by <a href="http://j.mp/metronictheme" target="_blank">OwnThemes</a></strong>
+</center>
+<br>
+<br>
+
+  
+    
     </div> 
   </body>
 </html>
 
+<script>
+var $navbar = $('#navbar');                   // Navbar to go trough!
+var $more   = $('#nav-more');                 // More More item to show/hide
+var $v_wrap = $('#navbar .nav');              // Visible wrapper
+var $h_wrap = $('#nav-more .dropdown-menu');  // Hidden wrapper
+var breaks  = [];                             // Breakpoints
+var pop_all_breakpoint = 767;                 // *** modify as needed. ***
+
+/**
+ * Return child to it's original place in the nav-wrapper
+ */
+function returnChild( $child, $dest_wrapper ) {
+  var cplace = $child.attr('data-navorder'),
+      inserted = false;
+
+  // Find place for the child... insert if found...
+  $dest_wrapper.children().each( function(idx, obj){
+    if ( idx == cplace ) {
+      $child.insertBefore(this);
+      inserted = true;
+    }
+  });
+
+  // ...if we didn't find a place to insert the childe, insert it last.
+  if ( !inserted ) {
+    $child.appendTo( $dest_wrapper );
+  }
+}
+
+/**
+ * Check navbar and handle more/show/hide.
+ */
+function updateNav() {
+
+  // If collapsed bootstrap nav, return all items to default places and hide 'more' dropdown.
+  if ( $(window).width() < pop_all_breakpoint ) {
+    while ( breaks.length ) {
+      returnChild( $h_wrap.children().first(), $v_wrap );
+      breaks.pop();
+    }
+
+    // Hide the 'more' dropdown
+    $more.addClass('hidden');
+    return; // Don't do anything else!
+  }
+
+  // Set/save order of menu-items (needed to keep their place among static items). Only run once!
+  if ( $v_wrap.attr('data-navsetup') != 'done' ) {
+    $v_wrap.children().each( function(idx, obj){
+      if ( $(this).hasClass('hideable') )
+        $(this).attr('data-navorder', idx);
+    });
+    $v_wrap.attr('data-navsetup', 'done');
+  }
+
+  // Calculate available space ( -30 to make sure )
+  var availableSpace = $navbar.width() - 30 - $('.navbar-header').width();
+  var changes = 0; // Could be true/false as well..
+
+  // The visible list is overflowing the nav & we have stuff we CAN hide
+  if ( availableSpace < $v_wrap.width() && $v_wrap.children('.hideable:not(.active)') ) {
+
+    // Record the width of the list
+    breaks.push( $v_wrap.width() );
+    changes++;
+
+    // Move item to the hidden list
+    $v_wrap.children('.hideable:not(.active)').last().prependTo( $h_wrap );
+
+    // Show the dropdown btn
+    if ($more.hasClass('hidden')) {
+      $more.removeClass('hidden');
+      $h_wrap.removeClass('hidden');
+    }
+  }
+  else { // The visible list is not overflowing
+
+    // Is there space for another item in the nav?
+    if (availableSpace > breaks[breaks.length - 1]) {
+
+      // Move the item to the visible list
+      returnChild( $h_wrap.children().first(), $v_wrap );
+      breaks.pop();
+      changes++;
+    }
+
+    // Hide the dropdown btn if hidden list is empty
+    if ( breaks.length <= 0 ) {
+      $more.addClass('hidden');
+      $h_wrap.addClass('hidden');
+    }
+  }
+
+  // Recur if changes were made
+  if ( changes ) {
+    updateNav();
+  }
+
+}
+
+// Window resize listener + trigger
+$(window).resize(function() {
+  updateNav();
+}).trigger('resize');
+
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY&callback=initMap"
+                                       async defer></script>

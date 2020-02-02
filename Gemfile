@@ -56,3 +56,9 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'carrierwave'   
 gem 'bootstrap-sass'  
+
+gem 'best_in_place'
+
+# gem 'inline_forms', '~> 5.2', '>= 5.2.4'
+# gem 'bootstrap', '~> 4.0.0.alpha3'
+gem 'geocoder'

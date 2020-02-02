@@ -1,3 +1,10 @@
+
+<html> 
+<body>
+<style>
+
+</style>
+<div class = 'customer' >
 <div class = "table-responsive">
 <table class='table table-striped'>
 <%= link_to "new", new_customer_path, :class => 'btn btn-primary'%>
@@ -21,8 +28,14 @@
     <td><%= customer.address %></td>
     <td><%= link_to "View", customer_orders_path(customer) %></td>
     <td><%= link_to "edit", edit_customer_path(customer), :class => 'edit_button' %></td>
-    
     </tr>
+   
+    
+    
     <% end %>
+
 </table>
 </div>
+</div>
+</body>
+</html> 

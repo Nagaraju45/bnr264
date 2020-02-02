@@ -1,0 +1,25 @@
+<div class = "table-responsive">
+<table class='table table-striped'>
+<%= link_to "new", new_location_path, :class => 'btn btn-primary'%>
+<h1>Address</h1>
+
+<tr>
+<th>Village</th>
+<th>Mandal</th>
+<th>District</th>
+<th>State</th>
+<th>Country</th>
+
+</tr>
+<% @locations.each do |location| %>    
+    <tr>
+    <td><%= location.village%></td>
+    <td><%= location.mandal%></td>
+    <td><%= location.district%></td>
+    <td><%= location.state%></td>
+    <td><%= location.country%></td>
+    </tr>   
+    <% end %>
+
+</table>
+</div>

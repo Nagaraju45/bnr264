@@ -1,7 +1,3 @@
 <%= form_with model: @product, url: update_products_path do |p| %>
-    <div class='form-group'>
-<%= p.label :Id, 'Id' %>
- <%= p.text_field :id, :class => "form-control", :disabled => true %>
-</div>
     <%= render partial: 'form', locals: {p: p} %>
- <% end %>
+<% end %>

@@ -1,6 +1,5 @@
 
-<%= form_with model: @product, url: new_products_path do |p| %>
-    <%= render partial: 'form', locals: {p: p} %>
-    
+<%= form_with model: @product, url: create_products_path do |p| %>
+    <%= render partial: 'form', locals: {p: p} %>    
  <% end %>
  

@@ -1,0 +1,23 @@
+<div class = "table-responsive">
+<table class='table table-striped'>
+<%= link_to "new", new_landmark_path, :class => 'btn btn-primary'%>
+<h1>Address</h1>
+
+<tr>
+<th>Name</th>
+<th>Age</th>
+<th>Phone_no</th>
+<th>Address</th>
+
+</tr>
+<% @landmarks.each do |landmark| %>    
+    <tr>
+    <td><%= landmark.name%></td>
+    <td><%= landmark.age%></td>
+    <td><%= landmark.phone_no%></td>
+    <td><%= landmark.address%></td>   
+    </tr>   
+    <% end %>
+
+</table>
+</div>

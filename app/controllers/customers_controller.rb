@@ -5,12 +5,13 @@ class CustomersController < ApplicationController
 
   def show
     @customer = Customer.find_by_id(params[:id])
-    @customer_orders = @customer.orders
-    
+    @customer_orders = @customer.orders    
   end
 
   def new
     @customer = Customer.new
+  end
+  def user
   end
   
   def create
@@ -21,6 +22,8 @@ class CustomersController < ApplicationController
 
   def edit
     @customer = Customer.find(params[:id])
+    # @customer.update(customer_params)
+    # redirect_to customers_path
   end
 
   def update
@@ -32,6 +35,6 @@ class CustomersController < ApplicationController
   private
 
   def customer_params
-    params.require(:customer).permit(:name, :email, :mobile, :address)
+    params.require(:customer).permit(:name, :email, :mobile, :village, :mandal, :district, :state, :country)
   end
 end
